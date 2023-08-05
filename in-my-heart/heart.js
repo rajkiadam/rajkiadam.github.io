@@ -1,5 +1,7 @@
 import * as THREE from './three.module';
 import { OrbitControls } from "./OrbitControls";
+import { DeviceOrientationControls } from "./DeviceOrientationControls"
+
 
 function createScene () {
 	const  scene = new THREE.Scene()
