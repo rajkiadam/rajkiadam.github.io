@@ -5,8 +5,8 @@ import { OBJLoader } from './OBJLoader.js'
 
 function createScene () {
 	const  scene = new THREE.Scene()
-	const  camera = new THREE.PerspectiveCamera(60,  window.innerWidth / window.innerHeight, 1, 100)
-	camera.position.y = 15
+	const  camera = new THREE.PerspectiveCamera(60,  window.innerWidth / window.innerHeight, 1, 200)
+	camera.position.y = 0
   camera.position.z = 50
 	    
 	const  renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -194,7 +194,7 @@ function setControls (camera, domElement, deviceOrientationMode) {
 }
 
 function createCylinder() {
-  const geometry = new THREE.CylinderGeometry(80, 80, 40, 64, 1, true);
+  const geometry = new THREE.CylinderGeometry(80, 80, 60, 64, 1, true);
   const materialOuter = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load("https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg")
   });
@@ -297,6 +297,7 @@ let object;
     requestAnimationFrame( animate )
     renderer.render( scene, camera )
     object.rotateOnWorldAxis(rotationYvector, -0.005)
+    cylinder.rotateOnWorldAxis(rotationYvector, -0.005)
     beatingAnimation(object)
     controls.update()
   }
