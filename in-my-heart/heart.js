@@ -194,7 +194,7 @@ function setControls (camera, domElement, deviceOrientationMode) {
 }
 
 function createCylinder() {
-  var cylinder = new THREE.CylinderGeometry(60, 60, 40, 64, 1, true);
+  var cylinder = new THREE.CylinderGeometry(30, 30, 40, 64, 1, true);
   var materialOuter = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load("https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg")
   });
