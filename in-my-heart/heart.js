@@ -15,13 +15,28 @@ function createScene () {
 	    
 	const color = 0xFFFFFF
 	const intensity = 0.75
-	const light = new THREE.PointLight(color, intensity)
-	light.position.set(-15, -10, 30)
+	const light1 = new THREE.PointLight(color, intensity)
+	light1.position.set(-15, -10, 30)
+  scene.add(light1)
+
+	const light2 = new THREE.PointLight(color, intensity)
+	light2.position.set(15, 10, 30)
+  scene.add(light2)
+
+  const light3 = new THREE.PointLight(color, intensity)
+	light3.position.set(15, 10, -30)
+  scene.add(light3)
+
+  const light4 = new THREE.PointLight(color, intensity)
+	light4.position.set(-15, -10, -30)
+  scene.add(light4)
 
   //const ambientLight = new THREE.AmbientLight(0xFF0000, 0.5)
   //scene.add(ambientLight)
 
-	scene.add(light)
+	
+  
+  
 		
 	return {
 		scene,
