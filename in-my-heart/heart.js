@@ -166,7 +166,7 @@ function handleMouseIntersection (camera, scene, meshUuid) {
 }
 
 function setControls (camera, domElement, deviceOrientationMode) {
-  const controls = deviceOrientationMode ? new DeviceOrientationControls(camera) : new THREE.OrbitControls( camera, domElement )
+  const controls = deviceOrientationMode ? new DeviceOrientationControls(camera) : new OrbitControls( camera, domElement )
 	controls.update()
   return {
     controls
