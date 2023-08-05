@@ -217,8 +217,10 @@ let object;
       }
     } );
   
+    object.position.x = 0;
     object.position.y = 0;
-    object.rotation.x += 1.5707963268;
+    object.position.z = 0;
+    object.rotation.x -= 1.5707963268;
     scene.add( object );
   
   }
@@ -272,7 +274,7 @@ let object;
   const animate = function () {
     requestAnimationFrame( animate )
     renderer.render( scene, camera )
-    object.rotation.y -= 0.005
+    object.rotation.x -= 0.005
     beatingAnimation(heartMesh)
     controls.update()
   }
