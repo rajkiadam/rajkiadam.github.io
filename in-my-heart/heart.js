@@ -18,6 +18,9 @@ function createScene () {
 	const light = new THREE.PointLight(color, intensity)
 	light.position.set(-15, -10, 30)
 
+  const ambientLight = new THREE.AmbientLight(0xFF0000, 0.5)
+  scene.add(ambientLight)
+
 	scene.add(light)
 		
 	return {
