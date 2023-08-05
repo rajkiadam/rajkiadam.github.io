@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { OrbitControls } from "./addons/OrbitControls.js";
-import { DeviceOrientationControls } from "./addons/DeviceOrientationControls.js"
+import { OrbitControls } from "addons/OrbitControls.js";
+import { DeviceOrientationControls } from "addons/DeviceOrientationControls.js"
 
 
 function createScene () {
