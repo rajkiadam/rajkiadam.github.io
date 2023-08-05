@@ -202,7 +202,7 @@ let object;
   const { vertices, trianglesIndexes} = useCoordinates()
   const { geo, material, heartMesh } = createHeartMesh(vertices, trianglesIndexes)
   // scene.add(heartMesh)
-  addWireFrameToMesh(heartMesh, geo)
+  // addWireFrameToMesh(heartMesh, geo)
   const { onMouseIntersection } = handleMouseIntersection(camera, scene, heartMesh.uuid)
 
   window.addEventListener( 'click', onMouseIntersection, false )
@@ -218,6 +218,7 @@ let object;
     } );
   
     object.position.y = 0;
+    object.rotation.x += 1.5707963268;
     scene.add( object );
   
   }
@@ -271,7 +272,7 @@ let object;
   const animate = function () {
     requestAnimationFrame( animate )
     renderer.render( scene, camera )
-    heartMesh.rotation.y -= 0.005
+    object.rotation.y -= 0.005
     beatingAnimation(heartMesh)
     controls.update()
   }
