@@ -276,7 +276,7 @@ let object;
   const animate = function () {
     requestAnimationFrame( animate )
     renderer.render( scene, camera )
-    object.rotation.y -= 0.005
+    //object.rotation.y -= 0.005
     beatingAnimation(object)
     controls.update()
   }
