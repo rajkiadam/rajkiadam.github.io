@@ -194,17 +194,17 @@ function setControls (camera, domElement, deviceOrientationMode) {
 }
 
 function createCylinder() {
-  var cylinder = new THREE.CylinderGeometry(30, 30, 40, 64, 1, true);
-  var materialOuter = new THREE.MeshBasicMaterial({
+  const cylinder = new THREE.CylinderGeometry(30, 30, 40, 64, 1, true);
+  const materialOuter = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load("https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg")
   });
-  var materialInner = new THREE.MeshBasicMaterial({
+  const materialInner = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load("https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg"),
     side: THREE.BackSide
   });
 
-  var meshOuter = new THREE.Mesh(cylinder, materialOuter);
-  var meshInner = new THREE.Mesh(cylinder, materialInner);
+  const meshOuter = new THREE.Mesh(cylinder, materialOuter);
+  const meshInner = new THREE.Mesh(cylinder, materialInner);
   meshOuter.add(meshInner);
   return cylinder;
 }
