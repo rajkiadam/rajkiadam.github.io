@@ -196,8 +196,10 @@ let object;
 
     object.traverse( function ( child ) {
   
-      if ( child.isMesh ) child.material.map = texture;
-      child.material.color.set(0xFF0000)
+      if ( child.isMesh ) {
+        //child.material.map = texture;
+        child.material.color.set(0xFF0000)
+      }
     } );
   
     object.position.y = 0;
@@ -216,7 +218,7 @@ let object;
 				// texture
 
 				const textureLoader = new THREE.TextureLoader( manager );
-				const texture = textureLoader.load( 'textures/uv_grid_opengl.jpg' );
+				//const texture = textureLoader.load( 'textures/uv_grid_opengl.jpg' );
 
 				// model
 
