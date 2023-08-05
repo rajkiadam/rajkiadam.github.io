@@ -92,9 +92,10 @@ function useCoordinates () {
 
 function createHeartMesh (coordinatesList, trianglesIndexes) {
 	const geo = new THREE.BufferGeometry()
+  const vertices = []
 	for (let i in trianglesIndexes) {
 		if ((i+1)%3 === 0) {
-			geo.vertices.push(coordinatesList[trianglesIndexes[i-2]], coordinatesList[trianglesIndexes[i-1]], coordinatesList[trianglesIndexes[i]])
+			vertices.push(coordinatesList[trianglesIndexes[i-2]], coordinatesList[trianglesIndexes[i-1]], coordinatesList[trianglesIndexes[i]])
 			geo.faces.push(new THREE.Face3(i-2, i-1, i))
 		}
 	}
