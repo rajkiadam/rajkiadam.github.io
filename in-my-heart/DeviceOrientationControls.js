@@ -155,3 +155,5 @@ var DeviceOrientationControls = function ( object ) {
 
 DeviceOrientationControls.prototype = Object.create( EventDispatcher.prototype );
 DeviceOrientationControls.prototype.constructor = DeviceOrientationControls;
+
+export { DeviceOrientationControls }
