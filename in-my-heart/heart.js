@@ -194,7 +194,7 @@ function setControls (camera, domElement, deviceOrientationMode) {
 }
 
 function createCylinder() {
-  const cylinder = new THREE.CylinderGeometry(30, 30, 40, 64, 1, true);
+  const geometry = new THREE.CylinderGeometry(30, 30, 40, 64, 1, true);
   const materialOuter = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load("https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg")
   });
@@ -203,10 +203,10 @@ function createCylinder() {
     side: THREE.BackSide
   });
 
-  const meshOuter = new THREE.Mesh(cylinder, materialOuter);
-  const meshInner = new THREE.Mesh(cylinder, materialInner);
-  meshOuter.add(meshInner);
-  return meshOuter;
+  const cylinder = new THREE.Mesh(geometry, materialOuter);
+  const meshInner = new THREE.Mesh(geometry, materialInner);
+  cylinder.add(meshInner);
+  return cylinder;
 }
 
 let object;
@@ -217,7 +217,7 @@ let object;
   const { controls } = setControls(camera, renderer.domElement, window.location.hash.includes('deviceOrientation'))
   const { vertices, trianglesIndexes} = useCoordinates()
   const { geo, material, heartMesh } = createHeartMesh(vertices, trianglesIndexes)
-  const { cylinder } = createCylinder()
+  const cylinder = createCylinder()
   scene.add(cylinder)
   // scene.add(heartMesh)
   // addWireFrameToMesh(heartMesh, geo)
