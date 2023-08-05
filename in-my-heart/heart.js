@@ -114,7 +114,7 @@ function addWireFrameToMesh (mesh, geometry) {
 	mesh.add(line)
 }
 
-const beatingIncrement = 0.012
+const beatingIncrement = 0.010
 let scaleThreshold = false
 function beatingAnimation (mesh) {
 	 // while the scale value is below the max,
