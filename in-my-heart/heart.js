@@ -206,7 +206,7 @@ function createCylinder() {
   const meshOuter = new THREE.Mesh(cylinder, materialOuter);
   const meshInner = new THREE.Mesh(cylinder, materialInner);
   meshOuter.add(meshInner);
-  return cylinder;
+  return meshOuter;
 }
 
 let object;
