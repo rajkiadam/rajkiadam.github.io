@@ -1,6 +1,7 @@
 import * as THREE from './three.module.js'
 import { OrbitControls } from './OrbitControls.js'
 import { DeviceOrientationControls } from './DeviceOrientationControls.js'
+import { OBJLoader } from './OBJLoader.js'
 
 function createScene () {
 	const  scene = new THREE.Scene()
@@ -174,16 +175,80 @@ function setControls (camera, domElement, deviceOrientationMode) {
   }
 }
 
+let object;
+
+
 (function init () {
   const {scene, camera, renderer} = createScene()
   const { controls } = setControls(camera, renderer.domElement, window.location.hash.includes('deviceOrientation'))
   const { vertices, trianglesIndexes} = useCoordinates()
   const { geo, material, heartMesh } = createHeartMesh(vertices, trianglesIndexes)
-  scene.add(heartMesh)
+  // scene.add(heartMesh)
   addWireFrameToMesh(heartMesh, geo)
   const { onMouseIntersection } = handleMouseIntersection(camera, scene, heartMesh.uuid)
 
   window.addEventListener( 'click', onMouseIntersection, false )
+
+  function loadModel() {
+
+    object.traverse( function ( child ) {
+  
+      if ( child.isMesh ) child.material.map = texture;
+  
+    } );
+  
+    object.position.y = 0;
+    scene.add( object );
+  
+  }
+
+  const manager = new THREE.LoadingManager( loadModel );
+
+				manager.onProgress = function ( item, loaded, total ) {
+
+					console.log( item, loaded, total );
+
+				};
+
+				// texture
+
+				const textureLoader = new THREE.TextureLoader( manager );
+				const texture = textureLoader.load( 'textures/uv_grid_opengl.jpg' );
+
+				// model
+
+				function onProgress( xhr ) {
+
+					if ( xhr.lengthComputable ) {
+
+						const percentComplete = xhr.loaded / xhr.total * 100;
+						console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
+
+					}
+
+				}
+
+				function onError() {}
+
+				const loader = new OBJLoader( manager );
+				loader.load( './heart.obj', function ( obj ) {
+
+					object = obj;
+
+				}, onProgress, onError );
+
+				//
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+  
 
   const animate = function () {
     requestAnimationFrame( animate )
