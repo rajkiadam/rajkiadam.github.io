@@ -6,8 +6,9 @@ import { OBJLoader } from './OBJLoader.js'
 function createScene () {
 	const  scene = new THREE.Scene()
 	const  camera = new THREE.PerspectiveCamera(60,  window.innerWidth / window.innerHeight, 1, 200)
-	camera.position.y = 0
+	camera.position.y = 30
   camera.position.z = 50
+  camera.lookAt(0, 0, 0)
 	    
 	const  renderer = new THREE.WebGLRenderer({ antialias: true })
 	renderer.setSize(window.innerWidth, window.innerHeight)
@@ -297,7 +298,7 @@ let object;
     requestAnimationFrame( animate )
     renderer.render( scene, camera )
     object.rotateOnWorldAxis(rotationYvector, -0.005)
-    cylinder.rotateOnWorldAxis(rotationYvector, -0.005)
+    //cylinder.rotateOnWorldAxis(rotationYvector, -0.005)
     beatingAnimation(object)
     controls.update()
   }
