@@ -5,7 +5,8 @@ import { DeviceOrientationControls } from './DeviceOrientationControls.js'
 function createScene () {
 	const  scene = new THREE.Scene()
 	const  camera = new THREE.PerspectiveCamera(60,  window.innerWidth / window.innerHeight, 1, 100)
-	camera.position.z = 30
+	camera.position.y = 7
+  camera.position.z = 30
 	    
 	const  renderer = new THREE.WebGLRenderer({ antialias: true })
 	renderer.setSize(window.innerWidth, window.innerHeight)
