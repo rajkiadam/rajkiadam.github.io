@@ -1,8 +1,8 @@
-const { Euler,
+import { Euler,
 	EventDispatcher,
 	MathUtils,
 	Quaternion,
-	Vector3 } = THREE
+	Vector3 } from './three.module.js'
 
 var DeviceOrientationControls = function ( object ) {
 

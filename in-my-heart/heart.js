@@ -1,6 +1,6 @@
 import * as THREE from './three.module.js'
 import { OrbitControls } from './OrbitControls.js'
-// import { DeviceOrientationControls } from './DeviceOrientationControls.js'
+import { DeviceOrientationControls } from './DeviceOrientationControls.js'
 
 function createScene () {
 	const  scene = new THREE.Scene()
@@ -165,8 +165,8 @@ function handleMouseIntersection (camera, scene, meshUuid) {
 }
 
 function setControls (camera, domElement, deviceOrientationMode) {
-  // const controls = deviceOrientationMode ? new DeviceOrientationControls(camera) : new OrbitControls( camera, domElement )
-  const controls = new OrbitControls( camera, domElement )
+  const controls = deviceOrientationMode ? new DeviceOrientationControls(camera) : new OrbitControls( camera, domElement )
+  // const controls = new OrbitControls( camera, domElement )
 	controls.update()
   return {
     controls
