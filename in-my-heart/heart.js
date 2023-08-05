@@ -273,10 +273,12 @@ let object;
 
 				window.addEventListener( 'resize', onWindowResize, false );
 */
+  const rotationYvector = new THREE.Vector3(0, 1, 0)
+
   const animate = function () {
     requestAnimationFrame( animate )
     renderer.render( scene, camera )
-    object.rotation.y -= 0.005
+    object.rotateOnWorldAxis(rotationYvector, -0.005)
     beatingAnimation(object)
     controls.update()
   }
