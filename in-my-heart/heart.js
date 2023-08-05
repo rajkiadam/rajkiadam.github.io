@@ -193,6 +193,22 @@ function setControls (camera, domElement, deviceOrientationMode) {
   }
 }
 
+function createCylinder() {
+  var cylinder = new THREE.CylinderGeometry(60, 60, 40, 64, 1, true);
+  var materialOuter = new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg")
+  });
+  var materialInner = new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg"),
+    side: THREE.BackSide
+  });
+
+  var meshOuter = new THREE.Mesh(cylinder, materialOuter);
+  var meshInner = new THREE.Mesh(cylinder, materialInner);
+  meshOuter.add(meshInner);
+  return cylinder;
+}
+
 let object;
 
 
@@ -201,6 +217,8 @@ let object;
   const { controls } = setControls(camera, renderer.domElement, window.location.hash.includes('deviceOrientation'))
   const { vertices, trianglesIndexes} = useCoordinates()
   const { geo, material, heartMesh } = createHeartMesh(vertices, trianglesIndexes)
+  const { cylinder } = createCylinder()
+  scene.add(cylinder)
   // scene.add(heartMesh)
   // addWireFrameToMesh(heartMesh, geo)
   const { onMouseIntersection } = handleMouseIntersection(camera, scene, heartMesh.uuid)
@@ -229,49 +247,49 @@ let object;
 
   const manager = new THREE.LoadingManager( loadModel );
 
-				manager.onProgress = function ( item, loaded, total ) {
+  manager.onProgress = function ( item, loaded, total ) {
 
-					console.log( item, loaded, total );
+    console.log( item, loaded, total );
 
-				};
+  };
 
-				// texture
+  // texture
 
-				const textureLoader = new THREE.TextureLoader( manager );
-				//const texture = textureLoader.load( 'textures/uv_grid_opengl.jpg' );
+  const textureLoader = new THREE.TextureLoader( manager );
+  //const texture = textureLoader.load( 'textures/uv_grid_opengl.jpg' );
 
-				// model
+  // model
 
-				function onProgress( xhr ) {
+  function onProgress( xhr ) {
 
-					if ( xhr.lengthComputable ) {
+    if ( xhr.lengthComputable ) {
 
-						const percentComplete = xhr.loaded / xhr.total * 100;
-						console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
+      const percentComplete = xhr.loaded / xhr.total * 100;
+      console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
 
-					}
+    }
 
-				}
+  }
 
-				function onError() {}
+  function onError() {}
 
-				const loader = new OBJLoader( manager );
-				loader.load( './heart.obj', function ( obj ) {
+  const loader = new OBJLoader( manager );
+  loader.load( './heart.obj', function ( obj ) {
 
-					object = obj;
+    object = obj;
 
-				}, onProgress, onError );
+  }, onProgress, onError );
 
-				//
+  //
 /** 
-				renderer = new THREE.WebGLRenderer();
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				container.appendChild( renderer.domElement );
+  renderer = new THREE.WebGLRenderer();
+  renderer.setPixelRatio( window.devicePixelRatio );
+  renderer.setSize( window.innerWidth, window.innerHeight );
+  container.appendChild( renderer.domElement );
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+  document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
-				window.addEventListener( 'resize', onWindowResize, false );
+  window.addEventListener( 'resize', onWindowResize, false );
 */
   const rotationYvector = new THREE.Vector3(0, 1, 0)
 
