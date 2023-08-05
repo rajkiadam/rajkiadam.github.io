@@ -238,7 +238,7 @@ let object;
 				}, onProgress, onError );
 
 				//
-
+/** 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
@@ -247,9 +247,7 @@ let object;
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 				window.addEventListener( 'resize', onWindowResize, false );
-
-  
-
+*/
   const animate = function () {
     requestAnimationFrame( animate )
     renderer.render( scene, camera )
