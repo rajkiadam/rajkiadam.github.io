@@ -220,7 +220,8 @@ let object;
     object.position.x = 0;
     object.position.y = 0;
     object.position.z = 0;
-    // object.rotation.x -= 1.5707963268;
+    object.rotateX(1.5707963268)
+   
     scene.add( object );
   
   }
