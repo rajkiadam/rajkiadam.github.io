@@ -18,8 +18,8 @@ function createScene () {
 	const light = new THREE.PointLight(color, intensity)
 	light.position.set(-15, -10, 30)
 
-  const ambientLight = new THREE.AmbientLight(0xFF0000, 0.5)
-  scene.add(ambientLight)
+  //const ambientLight = new THREE.AmbientLight(0xFF0000, 0.5)
+  //scene.add(ambientLight)
 
 	scene.add(light)
 		
@@ -197,7 +197,7 @@ let object;
     object.traverse( function ( child ) {
   
       if ( child.isMesh ) child.material.map = texture;
-  
+      child.material.color.set(0xFF0000)
     } );
   
     object.position.y = 0;
