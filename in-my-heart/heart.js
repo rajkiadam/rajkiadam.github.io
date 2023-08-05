@@ -1,6 +1,6 @@
-import * as THREE from './three.module';
-import { OrbitControls } from "./OrbitControls";
-import { DeviceOrientationControls } from "./DeviceOrientationControls"
+import * as THREE from './three.module.js';
+import { OrbitControls } from "./OrbitControls.js";
+import { DeviceOrientationControls } from "./DeviceOrientationControls.js"
 
 
 function createScene () {
