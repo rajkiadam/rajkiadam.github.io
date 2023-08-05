@@ -220,7 +220,8 @@ let object;
     object.position.x = 0;
     object.position.y = 0;
     object.position.z = 0;
-    object.rotateX(1.5707963268)
+
+    object.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), 1.5707963268)
    
     scene.add( object );
   
