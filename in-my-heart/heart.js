@@ -204,8 +204,19 @@ function createCylinder() {
     side: THREE.BackSide
   });
 
+  var mateials = []
+  materials.push(new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("./imgs/IMG_001")
+  }))
+  materials.push(new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("./imgs/IMG_002")
+  }))
+  materials.push(new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("./imgs/IMG_003")
+  }))
+
   const cylinder = new THREE.Mesh(geometry, materialOuter);
-  const meshInner = new THREE.Mesh(geometry, materialInner);
+  const meshInner = new THREE.Mesh(geometry, materials);
   cylinder.add(meshInner);
   return cylinder;
 }
