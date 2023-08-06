@@ -5,9 +5,9 @@ import { OBJLoader } from './OBJLoader.js'
 
 function createScene () {
 	const  scene = new THREE.Scene()
-	const  camera = new THREE.PerspectiveCamera(40,  window.innerWidth / window.innerHeight, 1, 500)
+	const  camera = new THREE.PerspectiveCamera(50,  window.innerWidth / window.innerHeight, 1, 600)
 	camera.position.y = 30
-  camera.position.z = 50
+  camera.position.z = 200
   camera.lookAt(0, 0, 0)
 	    
 	const  renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -197,7 +197,7 @@ function setControls (camera, domElement, deviceOrientationMode) {
 function createCylinder() {
   const geometry = new THREE.SphereGeometry(200, 64, 32);
   const material = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('./imgs/collage-6x6-sphere.jpg'),
+    map: new THREE.TextureLoader().load('./imgs/collage-6x6-wide.jpg'),
     side: THREE.BackSide
   })
 
