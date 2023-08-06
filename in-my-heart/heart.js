@@ -5,7 +5,7 @@ import { OBJLoader } from './OBJLoader.js'
 
 function createScene () {
 	const  scene = new THREE.Scene()
-	const  camera = new THREE.PerspectiveCamera(60,  window.innerWidth / window.innerHeight, 1, 200)
+	const  camera = new THREE.PerspectiveCamera(40,  window.innerWidth / window.innerHeight, 1, 500)
 	camera.position.y = 30
   camera.position.z = 50
   camera.lookAt(0, 0, 0)
@@ -195,29 +195,13 @@ function setControls (camera, domElement, deviceOrientationMode) {
 }
 
 function createCylinder() {
-  const geometry = new THREE.CylinderGeometry(80, 80, 60, 64, 1, true);
-  const materialOuter = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg")
-  });
-  const materialInner = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg"),
+  const geometry = new THREE.SphereGeometry(200, 64, 32);
+  const material = new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load('./imgs/collage-6x6-sphere.jpg'),
     side: THREE.BackSide
-  });
+  })
 
-  const materials = []
-  materials.push(new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("./imgs/IMG_001")
-  }))
-  materials.push(new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("./imgs/IMG_002")
-  }))
-  materials.push(new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("./imgs/IMG_003")
-  }))
-
-  const cylinder = new THREE.Mesh(geometry, materialOuter);
-  const meshInner = new THREE.Mesh(geometry, materials);
-  cylinder.add(meshInner);
+  const cylinder = new THREE.Mesh(geometry, material);
   return cylinder;
 }
 
