@@ -204,7 +204,7 @@ function createCylinder() {
     side: THREE.BackSide
   });
 
-  var mateials = []
+  const materials = []
   materials.push(new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load("./imgs/IMG_001")
   }))
