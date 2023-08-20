@@ -5,7 +5,7 @@ import { OBJLoader } from './OBJLoader.js'
 
 function createScene () {
 	const  scene = new THREE.Scene()
-	const  camera = new THREE.PerspectiveCamera(50,  window.innerWidth / window.innerHeight, 1, 600)
+	const  camera = new THREE.PerspectiveCamera(50,  window.innerWidth / window.innerHeight, 1, 1000)
 	camera.position.y = 30
   camera.position.z = 200
   camera.lookAt(0, 0, 0)
